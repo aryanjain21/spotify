@@ -1,9 +1,14 @@
-
+import React from 'react';
+import { Provider } from 'react-redux'
+import { store } from './configureStore';
+import Home from './containers/home/home';
 
 function App() {
   return (
     <div className="App">
-      Sangeet
+      <Provider store={store}>
+        <Home />
+      </Provider>
     </div>
   );
 }
