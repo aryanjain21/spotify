@@ -6,16 +6,26 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.5",
+    "styled-media-query": "^2.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:css": "stylelint app/**/*.js",
+    "lint:eslint": "eslint --ignore-path .eslintignore --ignore-pattern internals/scripts",
+    "lint:eslint:fix": "eslint --ignore-path .eslintignore --ignore-pattern internals/scripts --fix",
+    "lint:js": "npm run lint:eslint -- . ",
+    "lint:staged": "lint-staged",
+    "prettify": "prettier --write"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +44,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:eslint:fix",
+      "git add --force",
+      "jest --findRelatedTests $STAGED_FILES"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-formatter-table": "^7.32.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.7.1",
+    "prettier-standard": "^16.4.1"
   }
 }
