@@ -1,6 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import { Txt } from '../txt/txt';
 
 const StyledLink = styled.div`
@@ -20,9 +22,9 @@ Clickable.propTypes = {
   text: PropTypes.string.isRequired
 };
 
-Txt.defaultProps = {
-    onClick: () => {},
-    text: ''
+Clickable.defaultProps = {
+  onClick: () => { },
+  text: ''
 };
 
 export default Clickable;

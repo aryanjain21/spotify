@@ -1,8 +1,10 @@
 import React, { memo } from 'react';
-import styled from 'styled-components';
+
 import { PropTypes } from 'prop-types';
-import Ternary from '../Ternary';
+import styled from 'styled-components';
+
 import { fonts } from '../../styles';
+import Ternary from '../Ternary';
 
 const StyledText = styled.p`
   && {
@@ -10,7 +12,7 @@ const StyledText = styled.p`
     ${(props) => props.font()};
   }
 `;
-const getFontStyle = (type) => (fonts.style[type] ? fonts.style[type] : () => {});
+const getFontStyle = (type) => (fonts.style[type] ? fonts.style[type] : () => { });
 export const Txt = ({ type, text, id, marginBottom, ...otherProps }) => (
   <StyledText font={getFontStyle(type)} marginBottom={marginBottom} {...otherProps}>
     <Ternary condition={id} otherwise={text} />
