@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import { Txt } from '../../components/txt/txt';
 import { setUser } from '../login/redux/reducer';
+import SideBar from '../sideBar/sideBar';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Home = () => {
   return (
     <div>
       <Txt text={'Hello'} type={'subText'} />
+      <SideBar />
     </div>
   );
 };

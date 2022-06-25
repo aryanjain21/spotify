@@ -34,7 +34,7 @@ module.exports = {
     'import/no-webpack-loader-syntax': 0,
     'react/display-name': 0,
     curly: ['error', 'all'],
-    'no-console': ['error', { allow: ['error'] }],
+    // 'no-console': ['error', { allow: ['error'] }],
     'max-lines': ['error', { max: 300, skipBlankLines: true, skipComments: true }],
     // 'prettier/prettier': ['error', prettierOptions]
     "no-duplicate-imports": "error",

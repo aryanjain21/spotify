@@ -2,10 +2,7 @@ import axios from 'axios';
 
 (function (axios) {
     axios.interceptors.request.use(function (req) {
-        if (req.url.includes('api')) {
-            let user = JSON.parse(localStorage.getItem('setUser')) || {};
-            req.headers.token = user.token;
-        }
+        console.error('req>>>', req)
         return req;
     }, function (error) {
         // Do something with request error
