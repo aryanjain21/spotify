@@ -1,24 +1,44 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { getBrowseById, getCurrentUserPlaylist, getItems } from '../../services';
+import { AiOutlineHome } from 'react-icons/ai'
+import { BsSearch } from 'react-icons/bs'
+import styled from 'styled-components';
+
+import List from '../../components/list/list';
+
+const Container = styled.div`
+    
+`;
+
+const StyledUl = styled.ul`
+
+`;
+
+const SIDE_BAR_LIST = [
+    {
+        id: '1',
+        icon: <AiOutlineHome style={{ color: '#B3B3B3', }} />,
+        txt: 'Home'
+    },
+    {
+        id: '2',
+        icon: <BsSearch style={{ color: '#B3B3B3' }} />,
+        txt: 'Search'
+    }
+];
 
 const SideBar = () => {
-    let type = "album,artist,playlist,track,show,episode"
-    useEffect(() => {
-        getCurrentUserPlaylist().then((resp) => {
-            console.error('resp', resp)
-        });
-        getItems(type).then((resp) => {
-            console.error('resp', resp)
-        })
-        getBrowseById(type).then((resp) => {
-            console.error('resp', resp)
-        })
-    }, [])
     return (
-        <div>
+        <Container>
             Side Bar
-        </div>
+            <StyledUl>
+                {SIDE_BAR_LIST.map((element) => (
+                    <React.Fragment key={element.id}>
+                        <List icons={element.icon} name={element.txt} id={element.id} />
+                    </React.Fragment>
+                ))}
+            </StyledUl>
+        </Container>
     );
 };
 

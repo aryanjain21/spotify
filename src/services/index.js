@@ -30,3 +30,15 @@ export const getAlbums = (data) => {
 export const getGenreSeeds = (data) => {
     return axios.get(`${process.env.REACT_APP_BACKEND}v1/recommendations/available-genre-seeds`, config, data);
 }
+
+export const fetchCurrentTrack = (data) => {
+    return axios.get(`${process.env.REACT_APP_BACKEND}v1/me/player/currently-playing`, config);
+}
+
+export const playerVolume = (data = 0) => {
+    return axios.put(`${process.env.REACT_APP_BACKEND}v1/me/player/volume`, { volume_percent: data }, config);
+}
+
+export const pauseState = (data) => {
+    return axios.put(`${process.env.REACT_APP_BACKEND}v1/me/player/pause`, {}, config);
+}

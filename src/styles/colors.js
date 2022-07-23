@@ -1,35 +1,35 @@
-/**
- * This file contains the application's colors.
- *
- * Define color here instead of duplicating them throughout the components.
- * That allows to change them more easily later on.
- */
-
-const primary = '#fcedda';
-const text = '#212529';
-const secondary = '#f8c49c';
-const success = '#28a745';
-const error = '#dc3545';
-const gotoStories = '#1890ff';
+const primary = "#FFF";
+const text = "#2C2C2C";
+const gray = "#B3B3B3";
+const secondary = "#000";
+const success = "#107F47";
+const error = "#D91734";
+const green = " #00FF00";
+const subTxt = "#A7A7A7;";
+const background = "#181818";
+const hoverBackground = "#282828";
 
 const colors = {
-  transparent: 'rgba(0,0,0,0)',
-  // Example colors:
+  transparent: "rgba(0,0,0,0)",
   text,
+  subTxt,
+  gray,
   primary,
   secondary,
   success,
   error,
-  gotoStories,
+  green,
+  background,
+  hoverBackground,
   theme: {
     lightMode: {
       primary,
-      secondary
+      secondary,
     },
     darkMode: {
       primary: secondary,
-      secondary: primary
-    }
-  }
+      secondary: primary,
+    },
+  },
 };
 module.exports = colors;

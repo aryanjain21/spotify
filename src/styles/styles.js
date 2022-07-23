@@ -1,17 +1,17 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
-import { colors } from './colors';
+import { colors } from "./colors";
 
 export const configureFlex = (
-  direction = 'row',
-  justifyContent = 'center',
-  alignItems = 'center',
-  alignContent = 'center',
+  direction = "row",
+  justifyContent = "center",
+  alignItems = "center",
+  alignContent = "center",
   flexBasis = 0,
   flexGrow = 1,
-  flexShrink = 0
+  flexShrink = 0,
 ) => css`
-  ${direction === 'row' ? row() : column()}
+  ${direction === "row" ? row() : column()}
   flex-direction: ${direction};
   justify-content: ${justifyContent};
   align-items: ${alignItems};
@@ -33,11 +33,11 @@ const column = () => css`
 `;
 
 const rowCenter = () => css`
-  ${configureFlex('row', 'center', 'center', 'center')};
+  ${configureFlex("row", "center", "center", "center")};
 `;
 
 const unequalColumns = () => css`
-  ${configureFlex('column', '', '', '', 0, 0, 0)};
+  ${configureFlex("column", "", "", "", 0, 0, 0)};
 `;
 
 const height = (height = 4) => css`
@@ -74,6 +74,36 @@ const horizontal = (horizontalMargin = 0) => css`
   margin-right: ${horizontalMargin}rem;
 `;
 
+const pTop = (paddingTop = 0) =>
+  css`
+    padding-top: ${paddingTop}rem;
+  `;
+
+const pBottom = (paddingBottom = 0) =>
+  css`
+    padding-bottom: ${paddingBottom}rem;
+  `;
+
+const pLeft = (paddingLeft = 0) =>
+  css`
+    padding-left: ${paddingLeft}rem;
+  `;
+
+const pRight = (paddingRight = 0) =>
+  css`
+    padding-right: ${paddingRight}rem;
+  `;
+
+const pVertical = (verticalPadding = 0) => css`
+  padding-top: ${verticalPadding}rem;
+  padding-bottom: ${verticalPadding}rem;
+`;
+
+const pHorizontal = (horizontalPadding = 0) => css`
+  padding-left: ${horizontalPadding}rem;
+  padding-right: ${horizontalPadding}rem;
+`;
+
 const borderRadiusBottom = (bottomRadius = 0) => css`
   border-bottom-left-radius: ${bottomRadius}px;
   border-bottom-right-radius: ${bottomRadius}px;
@@ -89,13 +119,13 @@ const borderRadius = (radius) =>
     border-radius: ${radius + `${typeof radius === `string` ? `;` : `px`}`};
   `;
 
-const borderWithRadius = (width = 1, type = 'solid', color = '#ccc', radius = 0) =>
+const borderWithRadius = (width = 1, type = "solid", color = "#ccc", radius = 0) =>
   css`
     border: ${width}px ${type} ${color};
     ${borderRadius(radius)}
   `;
 
-const boxShadow = (hOffset = 0, vOffset = 0, blur = 0, spread = 0, color = '#ccc') =>
+const boxShadow = (hOffset = 0, vOffset = 0, blur = 0, spread = 0, color = "#ccc") =>
   css`
     box-shadow: ${hOffset}px ${vOffset}px ${blur}px ${spread}px ${color};
   `;
@@ -109,7 +139,26 @@ const zIndex = (z = 1) => css`
   z-index: ${z};
 `;
 
-const textEllipsis = (width = '200px') => css`
+const pointer = (cursor = "pointer") => css`
+  cursor: ${cursor};
+  -webkit-tap-highlight-color: transparent;
+`;
+
+const position = (
+  position = "relative",
+  top = "auto",
+  right = "auto",
+  bottom = "auto",
+  left = "auto",
+) => css`
+  position: ${position};
+  top: ${top};
+  right: ${right};
+  bottom: ${bottom};
+  left: ${left};
+`;
+
+const textEllipsis = (width = "200px") => css`
   white-space: nowrap;
   overflow: hidden;
   width: ${width};
@@ -118,6 +167,8 @@ const textEllipsis = (width = '200px') => css`
 export default {
   height,
   zIndex,
+  pointer,
+  position,
   textEllipsis,
   margin: {
     top,
@@ -125,7 +176,15 @@ export default {
     right,
     left,
     vertical,
-    horizontal
+    horizontal,
+  },
+  padding: {
+    pTop,
+    pBottom,
+    pLeft,
+    pRight,
+    pVertical,
+    pHorizontal,
   },
   borderWithRadius,
   borderRadius,
@@ -136,7 +195,7 @@ export default {
     row,
     column,
     rowCenter,
-    unequalColumns
+    unequalColumns,
   },
-  boxShadow
+  boxShadow,
 };

@@ -1,28 +1,32 @@
-import React from 'react';
+import React from "react";
 
-import './config/axiosConfig';
+import "./config/axiosConfig";
 
-import { Provider } from 'react-redux'
-import { Route, Routes } from 'react-router-dom';
+import { Provider } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 
-import Home from './containers/home/home';
-// import PrivateRoute from './privateRoute';
-import Login from './containers/login/login';
-import { store } from './configureStore';
+import Home from "./containers/home/home";
+import Login from "./containers/login/login";
+import { store } from "./configureStore";
+import PrivateRoute from "./privateRoute";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Provider store={store}>
-        <Home />
+        {/* <Home /> */}
         <Routes>
           <Route exact path='login' element={<Login />} />
-          {/* <Route exact path='/' element={
+          <Route
+            exact
+            path='home'
+            element={
               <PrivateRoute>
                 <Home />
               </PrivateRoute>
-            } /> */}
-          {/* <Route exact path='*' element={<Fallback />} /> */}
+            }
+          />
+          <Route exact path='*' element={<Login />} />
         </Routes>
       </Provider>
     </div>

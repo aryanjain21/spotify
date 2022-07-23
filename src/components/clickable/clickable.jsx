@@ -3,18 +3,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Txt } from '../txt/txt';
+import { colors, styles } from '../../styles/index';
+// import { Txt } from '../txt/txt';
 
 const StyledLink = styled.div`
-  color: #1890ff;
+  color: ${(props) => props.color};
   &:hover {
-    cursor: pointer;
+    ${styles.pointer()};
+    color: ${colors.primary};
   }
 `;
 
+const getFontColor = (color) => (colors[color] ? colors[color] : colors.text);
 const Clickable = (props) => {
-  const { onClick, text } = props;
-  return <StyledLink onClick={onClick}>{text && <Txt text={text} />}</StyledLink>;
+  const { onClick, text, txtColor } = props;
+  return <StyledLink onClick={onClick} color={getFontColor(txtColor)}>{text}</StyledLink>;
 };
 
 Clickable.propTypes = {
